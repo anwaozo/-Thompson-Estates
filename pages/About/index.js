@@ -19,9 +19,12 @@ import {
 import { html, attributes } from "../../content/pages/about.md";
 import Contact from "@/components/Ui/Contact";
 const About = () => {
-  const { WelcomeSection } = attributes;
+  const { WelcomeSection, MetaTags } = attributes;
   return (
-    <Layout>
+    <Layout
+      metaDescription={MetaTags.metaDescription}
+      metaTitle={MetaTags.metatitle}
+    >
       <Stack borderBottom={"1px solid #939598"}>
         <Container maxW={"1200px"} mt={{ base: "8rem", xl: "8rem" }}>
           <Stack gap="50px">

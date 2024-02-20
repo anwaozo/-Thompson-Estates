@@ -4,7 +4,7 @@ Logo:
   footerIcon: "/images/secondLogo.png"
 MetaTags:
   metatitle: "Home"
-  metaDescription: ""
+  metaDescription: "Thompson Estates | Home"
 HeroSection:
   Homepage2bg: "/images/secondimgbg.png"
   Heading: "Your Trusted Partner in Home Transactions"
@@ -39,11 +39,11 @@ Contact:
 Faqs:
   contents:
     - question: "What is real Estate"
-      answer: ""
+      answer: "lorem ae dd wewefw vrfwefw"
     - question: " What is real Estate"
-      answer: ""
+      answer: "lorem ae dd wewefw vrfwefw"
     - question: " What is real Estate"
-      answer: ""
+      answer: "lorem ae dd wewefw vrfwefw"
     - question: " What is real Estate"
-      answer: ""
+      answer: "lorem ae dd wewefw vrfwefw"
 ---
