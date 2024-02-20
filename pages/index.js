@@ -6,10 +6,9 @@ import Apartments from "@/components/Ui/Apartments";
 import Properties from "@/components/Ui/Properties";
 import Contact from "@/components/Ui/Contact";
 import BlogPosts from "@/components/Ui/BlogPosts";
-import FAQs from "@/components/Ui/FAQs";
-import NewsLetter from "@/components/Ui/NewsLetter";
+import { attributes } from "../content/pages/home.md";
 const inter = Inter({ subsets: ["latin"] });
-
+const { MetaTags } = attributes;
 const importApartments = async () => {
   const markdownFiles = require
     .context("../Apartments", false, /\.md$/)
@@ -51,8 +50,11 @@ const importBlogPosts = async () => {
   );
 };
 
-const Home = ({ ApartmentsList, PropertiesList, BlogPostsList }) => (
-  <Layout>
+const Home = ({ ApartmentsList, PropertiesList, BlogPostsList, MetaTags }) => (
+  <Layout
+    metaDescription={MetaTags.metaDescription}
+    metaTitle={MetaTags.metatitle}
+  >
     <HeroSection />
     <DreamHome />
     <Apartments ApartmentsList={ApartmentsList} />

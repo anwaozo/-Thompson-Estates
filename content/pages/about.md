@@ -1,7 +1,7 @@
 ---
 MetaTags:
-  metatitle: "Home"
-  metaDescription: ""
+  metatitle: "About"
+  metaDescription: "Thompson Estates | About"
 WelcomeSection:
   heading: "Your Trusted Home Partner"
   subHeading: "About Thompson Estates"

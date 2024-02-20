@@ -1,11 +1,13 @@
 backend:
   name: git-gateway
-  repo: anwaozo/BaileySite.git
   branch: master # Replace with your default branch
 
 media_folder: public/images
 public_folder: /images
-
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "_"
 collections:
   - name: "pages"
     label: "Pages"
@@ -18,7 +20,8 @@ collections:
             label: "Logo"
             widget: "object"
             fields:
-              - { label: "Icon", name: "icon", widget: "image" }
+              - { label: "Header Logo", name: "icon", widget: "image" }
+              - { label: "Footer Logo", name: "footerIcon", widget: "image" }
 
           - name: "MetaTags"
             label: "Meta Tags"
@@ -35,57 +38,162 @@ collections:
             label: "Hero Section"
             widget: "object"
             fields:
+              - {
+                  label: "Second HomePage Background Image",
+                  name: "Homepage2bg",
+                  widget: "image",
+                }
+              - { label: "Heading", name: "Heading", widget: "string" }
               - { label: "Sub Heading", name: "subHeading", widget: "string" }
-              - { label: "Heading One", name: "Heading1", widget: "string" }
-              - { label: "Heading Two", name: "Heading2", widget: "string" }
-              - { label: "Hero Background Image", name: "bg", widget: "image" }
+              - { label: "Hero Image 1", name: "heroImage1", widget: "image" }
+              - { label: "Hero Image 2", name: "heroImage2", widget: "image" }
 
-          - name: "Awards"
-            label: "Awards Section"
+          - name: "DreamHome"
+            label: "Dream Home Section"
+            widget: "object"
+            fields:
+              - { label: "Section Title", name: "Heading", widget: "string" }
+              - {
+                  label: "Section subTitle",
+                  name: "subHeading",
+                  widget: "text",
+                }
+              - name: "features"
+                label: "Features"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Image", name: "image", widget: "string" }
+
+          - name: "Contact"
+            label: "Contact Section"
             widget: "object"
             fields:
               - {
                   label: "Section Title",
-                  name: "sectionName",
+                  name: "contactHeading",
                   widget: "string",
                 }
-              - name: "awardLists"
-                label: "Award Lists"
-                widget: "list"
-                fields:
-                  - { label: "Award Name", name: "awardName", widget: "string" }
-              - { label: "Image 1", name: "image1", widget: "image" }
-
-          - name: "features"
-            label: "Features Section"
-            widget: "object"
-            fields:
               - name: "content"
-                label: "Features content"
+                label: "Contact content"
                 widget: "list"
                 fields:
                   - { label: "Heading", name: "heading", widget: "string" }
-                  - {
-                      label: "Sub Heading",
-                      name: "subheading",
-                      widget: "string",
-                    }
-                  - { label: "Image", name: "image", widget: "image" }
 
-          - name: "Bio"
-            label: "Bio Section"
+          - name: "Faqs"
+            label: "Faqs Section"
             widget: "object"
             fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Paragraph", name: "paragraph", widget: "text" }
-              - { label: "Image", name: "image", widget: "image" }
               - name: "contents"
-                label: "Contents"
+                label: " Faqs Contents"
                 widget: "list"
                 fields:
-                  - {
-                      label: "Description",
-                      name: "description",
-                      widget: "markdown",
-                    }
-                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Question", name: "question", widget: "string" }
+                  - { label: "Answer", name: "answer", widget: "string" }
+
+      - label: "About"
+        name: "about"
+        file: "content/pages/about.md"
+        fields:
+          - name: "MetaTags"
+            label: "Meta Tags"
+            widget: "object"
+            fields:
+              - { label: "Meta Title", name: "metatitle", widget: "string" }
+              - {
+                  label: "Meta Description",
+                  name: "metaDescription",
+                  widget: "string",
+                }
+          - name: "WelcomeSection"
+            label: "Welcome About Section"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Sub Heading", name: "subHeading", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+
+          - { label: "Body", name: "body", widget: "markdown" }
+
+  - label: "Blog"
+    name: "blog"
+    folder: "blog/post"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true }
+      # - {
+      #     label: "Publish Date",
+      #     name: "date",
+      #     widget: "datetime",
+      #     required: true,
+      #   }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "text",
+          required: true,
+        }
+      - {
+          label: "Featured Image",
+          name: "image",
+          widget: "image",
+          required: true,
+        }
+      - { label: "Body", name: "body", widget: "markdown", required: true }
+
+  - label: "Properties"
+    name: "properties"
+    folder: "properties"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
+    fields:
+      - {
+          label: "Property Name",
+          name: "PropertyName",
+          widget: "string",
+          required: true,
+        }
+      - {
+          label: "Amount of Property",
+          name: "amount",
+          widget: "string",
+          required: true,
+        }
+      # - {
+      #     label: "Publish Date",
+      #     name: "date",
+      #     widget: "datetime",
+      #     required: true,
+      #   }
+      - {
+          label: "Location",
+          name: "location",
+          widget: "string",
+          required: true,
+        }
+      - {
+          label: "Number of Beds",
+          name: "noofbeds",
+          widget: "string",
+          required: true,
+        }
+      - {
+          label: "Number of Baths",
+          name: "noofbaths",
+          widget: "string",
+          required: true,
+        }
+      - {
+          label: "Number of Parking",
+          name: "noofparking",
+          widget: "string",
+          required: true,
+        }
+      - {
+          label: "Featured Image",
+          name: "image",
+          widget: "image",
+          required: true,
+        }
+      - { label: "Body", name: "body", widget: "markdown", required: true }
