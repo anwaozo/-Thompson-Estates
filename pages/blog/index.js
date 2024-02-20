@@ -7,7 +7,6 @@ import {
   HStack,
   Container,
   Heading,
-  Button,
   Image,
   Stack,
   Text,
