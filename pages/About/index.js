@@ -1,6 +1,5 @@
 import Layout from "@/components/Layout";
-import fs from "fs";
-import matter from "gray-matter";
+
 import {
   Container,
   Heading,
