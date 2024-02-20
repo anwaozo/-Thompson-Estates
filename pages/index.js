@@ -8,7 +8,7 @@ import Contact from "@/components/Ui/Contact";
 import BlogPosts from "@/components/Ui/BlogPosts";
 import { attributes } from "../content/pages/home.md";
 const inter = Inter({ subsets: ["latin"] });
-const { MetaTags } = attributes;
+
 const importApartments = async () => {
   const markdownFiles = require
     .context("../Apartments", false, /\.md$/)
@@ -50,7 +50,7 @@ const importBlogPosts = async () => {
   );
 };
 
-const Home = ({ ApartmentsList, PropertiesList, BlogPostsList, MetaTags }) => (
+const Home = ({ ApartmentsList, PropertiesList, BlogPostsList }) => (
   <Layout
     metaDescription={MetaTags.metaDescription}
     metaTitle={MetaTags.metatitle}
@@ -63,6 +63,7 @@ const Home = ({ ApartmentsList, PropertiesList, BlogPostsList, MetaTags }) => (
     <BlogPosts BlogPostsList={BlogPostsList} />
   </Layout>
 );
+const { MetaTags } = attributes;
 export async function getStaticProps() {
   const ApartmentsList = await importApartments();
   const PropertiesList = await importProperties();
