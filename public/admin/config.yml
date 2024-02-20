@@ -1,0 +1,91 @@
+backend:
+  name: git-gateway
+  repo: anwaozo/BaileySite.git
+  branch: master # Replace with your default branch
+
+media_folder: public/images
+public_folder: /images
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "home"
+        label: "HomePage"
+        file: "content/pages/home.md"
+        fields:
+          - name: "Logo"
+            label: "Logo"
+            widget: "object"
+            fields:
+              - { label: "Icon", name: "icon", widget: "image" }
+
+          - name: "MetaTags"
+            label: "Meta Tags"
+            widget: "object"
+            fields:
+              - { label: "Meta Title", name: "metatitle", widget: "string" }
+              - {
+                  label: "Meta Description",
+                  name: "metaDescription",
+                  widget: "string",
+                }
+
+          - name: "HeroSection"
+            label: "Hero Section"
+            widget: "object"
+            fields:
+              - { label: "Sub Heading", name: "subHeading", widget: "string" }
+              - { label: "Heading One", name: "Heading1", widget: "string" }
+              - { label: "Heading Two", name: "Heading2", widget: "string" }
+              - { label: "Hero Background Image", name: "bg", widget: "image" }
+
+          - name: "Awards"
+            label: "Awards Section"
+            widget: "object"
+            fields:
+              - {
+                  label: "Section Title",
+                  name: "sectionName",
+                  widget: "string",
+                }
+              - name: "awardLists"
+                label: "Award Lists"
+                widget: "list"
+                fields:
+                  - { label: "Award Name", name: "awardName", widget: "string" }
+              - { label: "Image 1", name: "image1", widget: "image" }
+
+          - name: "features"
+            label: "Features Section"
+            widget: "object"
+            fields:
+              - name: "content"
+                label: "Features content"
+                widget: "list"
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - {
+                      label: "Sub Heading",
+                      name: "subheading",
+                      widget: "string",
+                    }
+                  - { label: "Image", name: "image", widget: "image" }
+
+          - name: "Bio"
+            label: "Bio Section"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Paragraph", name: "paragraph", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
+              - name: "contents"
+                label: "Contents"
+                widget: "list"
+                fields:
+                  - {
+                      label: "Description",
+                      name: "description",
+                      widget: "markdown",
+                    }
+                  - { label: "Image", name: "image", widget: "image" }
